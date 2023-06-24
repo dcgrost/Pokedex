@@ -13,10 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Pokemon Name"
+        android:textAllCaps="true"
         android:textColor="@color/white"
-        android:textSize="50dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="45sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Pokemon Name" />
 
     <ImageView
         android:id="@+id/pokemonImage"
@@ -33,25 +34,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Altura: 1m"
         android:textColor="@color/white"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokemonImage" />
+        app:layout_constraintTop_toBottomOf="@+id/pokemonImage"
+        tools:text="Altura: 1m" />
 
     <TextView
         android:id="@+id/pokemonWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Peso: 1kg"
         android:textColor="@color/white"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokemonHeight" />
+        app:layout_constraintTop_toBottomOf="@+id/pokemonHeight"
+        tools:text="Peso: 1kg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
