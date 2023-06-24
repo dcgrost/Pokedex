@@ -3,6 +3,7 @@ package com.example.pokedex.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import com.example.pokedex.R
@@ -17,15 +18,16 @@ class MainActivity : AppCompatActivity() {
         newPokemonButton.setOnClickListener { getNewPokemon() }
     }
 
-    fun countMeters(){
+    fun countMeters() {
         //contamos metros
         //imprimimos en pantalla los metros avanzados
         //cuando llegamos a 10
         getNewPokemon()
     }
 
-    fun getNewPokemon(){
+    private fun getNewPokemon() {
         val newPokemonIntent = Intent(this, PokemonInfoActivity::class.java)
+        newPokemonIntent.putExtra("id", 1)
         startActivity(newPokemonIntent)
     }
 }
