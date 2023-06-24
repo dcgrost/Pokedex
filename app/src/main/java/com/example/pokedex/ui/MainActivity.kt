@@ -18,6 +18,7 @@ import com.example.pokedex.R
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
+    //variables de localizacion
     private lateinit var locationManager: LocationManager
     private lateinit var locationListener: LocationListener
     private var distanceTraveled = 0f
@@ -26,42 +27,46 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        //verificamos permisos
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
+            //si no tiene el permiso lo pide
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 100
             )
         }
-
+        //inicializamos el servicio
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
         locationListener = object : LocationListener {
+            //si la localizacion cambia
             override fun onLocationChanged(location: Location) {
-                distanceTraveled += location.distanceTo(location) // Calcular la distancia recorrida
-                updateDistanceText()
+                //aumenta a la variable lo que aumento
+                distanceTraveled += location.distanceTo(location)
+                //llama al metodo para actualizar la información de la distancia
+                updateDistance()
             }
-
-            override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
         }
         val newPokemonButton = findViewById<AppCompatButton>(R.id.newButton)
         newPokemonButton.setOnClickListener { getNewPokemon() }
+        //debug para aumentar la distancia
         val debbugButton = findViewById<Button>(R.id.button)
         debbugButton.setOnClickListener { addDistance() }
     }
 
+    //funcion debug para aumentar la distancia
     private fun addDistance() {
         distanceTraveled++
-        updateDistanceText()
+        updateDistance()
     }
 
     override fun onResume() {
         super.onResume()
-        // Registrar el LocationListener para recibir actualizaciones de ubicación
+        //vuelve a registrar el Listener para rescibir actualizaciones de ubicación
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -78,37 +83,40 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        // Detener las actualizaciones de ubicación cuando la actividad esté en pausa
+        //Detiene las actualizaciones de ubicación cuando la actividad esté en pausa
         locationManager.removeUpdates(locationListener)
     }
 
-    private fun updateDistanceText() {
+    //metodo para
+    private fun updateDistance() {
+        //si la distancia recorrida es menor a la distancia maxima
         if (distanceTraveled < targetDistance) {
             val formattedDistance = String.format("%.0f", distanceTraveled)
             val targetDistanceString = String.format("%.0f", targetDistance)
             val distanceText = "Metros recorridos: $formattedDistance/$targetDistanceString m"
-            // Actualizar la interfaz de usuario con el texto de distancia
+            //Actualzia el texto de la activity
             val metersTextView = findViewById<TextView>(R.id.meters)
             metersTextView.text = distanceText
         } else {
+            //cuando es 10m
+            //resetea contador
             distanceTraveled = 0f
+            //lanza toast
             Toast.makeText(this, "Pokemón encontrado", Toast.LENGTH_SHORT).show()
+            //obtiene un nuevo pokemon
             getNewPokemon()
         }
     }
 
-    fun countMeters() {
-        //cuando llegamos a 10
-        getNewPokemon()
-    }
-
     private fun getNewPokemon() {
+        //lanza la activity de info pasandole un numero aletorio generado como id
         val newPokemonIntent = Intent(this, PokemonInfoActivity::class.java)
         newPokemonIntent.putExtra("id", randomPokemon())
         startActivity(newPokemonIntent)
     }
 
     private fun randomPokemon(): Int {
+        //regresa un numero aleatorio entre 1 y 1010
         return Random.nextInt(1, 1010)
     }
 }

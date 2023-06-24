@@ -17,7 +17,7 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Agregar distancia" />
+            android:text="Debbug 'Add distance'" />
 
         <TextView
             android:id="@+id/meters"
@@ -26,13 +26,13 @@
             android:layout_gravity="center"
             android:layout_marginTop="75dp"
             android:gravity="center"
-            android:text="Metros recorridos: 0/10 m"
             android:textColor="@color/white"
             android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Metros recorridos: 0/10 m" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/newButton"

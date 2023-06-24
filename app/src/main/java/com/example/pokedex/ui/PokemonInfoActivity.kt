@@ -13,6 +13,7 @@ import com.example.pokedex.R
 
 class PokemonInfoActivity : AppCompatActivity() {
 
+    //inicializa la variable viewModel desde PokemonInfoViewModel
     lateinit var viewModel: PokemonInfoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,17 +31,18 @@ class PokemonInfoActivity : AppCompatActivity() {
         val pokemonHeightTV = findViewById<TextView>(R.id.pokemonHeight)
         val pokemonWeightTV = findViewById<TextView>(R.id.pokemonWeight)
 
+        //obtiene los extras enviados desde main que en este caso es el id
         val id = intent.extras?.getInt("id") as Int
-        Log.i("button click", id.toString())
-        //obtain information
+        //obtiene la informacion usando el id
         viewModel.getPokemonInfo(id)
 
-        //get change in info
+        //obtiene los cambios y los muestra en sus respectivos campos
         viewModel.pokemonInfo.observe(this, Observer { pokemon ->
             pokemonNameTV.text = pokemon.name
             pokemonHeightTV.text = "Altura: ${pokemon.height / 10.0} m"
             pokemonWeightTV.text = "Peso: ${pokemon.weight / 10.0} kg"
 
+            //usa Glide para interpretar y mostrar la imagen obtenida
             Glide.with(this).load(pokemon.sprites.frontDefault).into(pokemonImageIV)
         })
     }

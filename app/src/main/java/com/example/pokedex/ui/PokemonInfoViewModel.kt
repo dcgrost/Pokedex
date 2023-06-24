@@ -11,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class PokemonInfoViewModel() : ViewModel() {
+    //usa retrofit para el MVVM
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl("https://pokeapi.co/api/v2/")
         .addConverterFactory(GsonConverterFactory.create())
@@ -21,8 +22,10 @@ class PokemonInfoViewModel() : ViewModel() {
     val pokemonInfo = MutableLiveData<Pokemon>()
 
     fun getPokemonInfo(id: Int) {
+        //obtiene una llamada del servicio proporcionado por PokeApiService
         val call = service.getPokemonInfo(id)
 
+        //recibe dicha informacion
         call.enqueue(object : Callback<Pokemon> {
             override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
                 response.body()?.let { pokemon ->
@@ -30,6 +33,7 @@ class PokemonInfoViewModel() : ViewModel() {
                 }
             }
 
+            //o cancela
             override fun onFailure(call: Call<Pokemon>, t: Throwable) {
                 call.cancel()
             }
