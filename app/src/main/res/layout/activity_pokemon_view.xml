@@ -4,55 +4,282 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkgray"
     tools:context=".ui.PokemonInfoActivity">
 
-    <TextView
-        android:id="@+id/pokemonName"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textSize="45sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Pokemon Name" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#CA215A"
+        tools:context=".dashboard">
 
-    <ImageView
-        android:id="@+id/pokemonImage"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokemonName"
-        tools:srcCompat="@tools:sample/avatars" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#CA215A"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/pokemonHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokemonImage"
-        tools:text="Altura: 1m" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="108dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="24dp"
+                android:background="@drawable/bg_pokidex_1"
+                android:orientation="horizontal"
+                android:padding="6dp">
 
-    <TextView
-        android:id="@+id/pokemonWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokemonHeight"
-        tools:text="Peso: 1kg" />
+                <ImageView
+                    android:id="@+id/dashboard_btn_camera_start"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:src="@drawable/icon_cam" />
 
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/icon_radar_red" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/icon_radar_yellow" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/icon_radar_green" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="216dp"
+                    android:layout_height="216dp"
+                    android:layout_marginLeft="24dp"
+                    android:background="@drawable/bg_screen"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="3dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/icon_radar_red" />
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/icon_radar_red" />
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:id="@+id/dashboard_fragment_camera_p"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="34dp">
+
+                        <ImageView
+                            android:id="@+id/pokemonImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="108dp"
+                    android:layout_height="108dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="6dp">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_arrow_up"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/icon_up" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_arrow_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/icon_right" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_arrow_left"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/icon_left" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_arrow_down"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/icon_down" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@color/blue_dark"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/icon_cam_click" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FE1A55"
+            android:orientation="vertical"
+            android:paddingTop="12dp">
+
+            <TextView
+                android:id="@+id/pokemonName"
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/bg_input_name"
+                android:fontFamily="@font/digital7"
+                android:gravity="center"
+                android:maxLength="30"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#fff"
+                android:textColorHint="#e9e9e9"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Pokemon Name" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#CA215A"
+                    android:padding="3dp">
+
+                    <TextView
+                        android:id="@+id/pokemonHeight"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_input_name"
+                        android:fontFamily="@font/digital7"
+                        android:gravity="center"
+                        android:maxLength="15"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:textColor="#fff"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Altura: 12m" />
+
+                    <TextView
+                        android:id="@+id/pokemonWeight"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_input_name"
+                        android:fontFamily="@font/digital7"
+                        android:gravity="center"
+                        android:maxLength="15"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:textColor="#fff"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Peso: 120kg" />
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+                <Button
+                    android:id="@+id/back"
+                    android:text="Volver"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:background="@drawable/icon_separator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

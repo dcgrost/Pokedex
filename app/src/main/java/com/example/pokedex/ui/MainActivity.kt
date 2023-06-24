@@ -51,10 +51,10 @@ class MainActivity : AppCompatActivity() {
                 updateDistance()
             }
         }
-        val newPokemonButton = findViewById<AppCompatButton>(R.id.newButton)
+        val newPokemonButton = findViewById<Button>(R.id.newButton)
         newPokemonButton.setOnClickListener { getNewPokemon() }
         //debug para aumentar la distancia
-        val debbugButton = findViewById<Button>(R.id.button)
+        val debbugButton = findViewById<Button>(R.id.debugButton)
         debbugButton.setOnClickListener { addDistance() }
     }
 

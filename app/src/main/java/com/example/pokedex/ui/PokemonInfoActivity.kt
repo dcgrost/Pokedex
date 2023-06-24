@@ -4,6 +4,7 @@ import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -30,6 +31,11 @@ class PokemonInfoActivity : AppCompatActivity() {
         val pokemonImageIV = findViewById<ImageView>(R.id.pokemonImage)
         val pokemonHeightTV = findViewById<TextView>(R.id.pokemonHeight)
         val pokemonWeightTV = findViewById<TextView>(R.id.pokemonWeight)
+
+        val btnBack: Button = findViewById(R.id.back)
+        btnBack.setOnClickListener {
+            finish() // Cierra la actividad actual y regresa a la actividad anterior en la pila
+        }
 
         //obtiene los extras enviados desde main que en este caso es el id
         val id = intent.extras?.getInt("id") as Int
