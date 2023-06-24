@@ -38,8 +38,8 @@ class PokemonInfoActivity : AppCompatActivity() {
         //get change in info
         viewModel.pokemonInfo.observe(this, Observer { pokemon ->
             pokemonNameTV.text = pokemon.name
-            pokemonHeightTV.text = "Altura: ${pokemon.height / 10.0}m"
-            pokemonWeightTV.text = "Peso: ${pokemon.weight / 10.0}kg"
+            pokemonHeightTV.text = "Altura: ${pokemon.height / 10.0} m"
+            pokemonWeightTV.text = "Peso: ${pokemon.weight / 10.0} kg"
 
             Glide.with(this).load(pokemon.sprites.frontDefault).into(pokemonImageIV)
         })
